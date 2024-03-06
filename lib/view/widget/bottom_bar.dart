@@ -42,7 +42,7 @@ class BottomBar extends StatelessWidget {
 }
 
 final List<Widget> _pages = [
-  const HomeScreen(),
+  HomeScreen(),
   CallsScreen(),
   ContactScreen(),
   SettingScreen(),
