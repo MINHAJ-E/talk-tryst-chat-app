@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
+import 'package:talk_tryst/view/home/widget/alert_dialog.dart';
 import 'package:talk_tryst/view/home/widget/build_conversation.dart';
+import 'package:talk_tryst/view/home/widget/settings_page_tile.dart';
+import 'package:talk_tryst/view/settings_page/help_center.dart';
+import 'package:talk_tryst/view/settings_page/settings_page.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -36,7 +40,7 @@ class _SettingScreenState extends State<SettingScreen> {
             ],
           ),
           Positioned(
-              top: 420,
+              top: 320,
               left: 0,
               right: 0,
               bottom: 0,
@@ -60,23 +64,59 @@ class _SettingScreenState extends State<SettingScreen> {
                             backgroundImage:
                                 AssetImage("assets/status image3.png"),
                           ),
-                          Column(
-                            children: [
-                              Text("data"),
-                              Text("data"),
-                            ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 20, top: 50),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "MINHAJ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  "9645651389",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    // fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       ),
                     ),
-                    buildConversationRow('Laura', 'Hello, how are you',
-                        'status image1.png', 0, context),
-                    buildConversationRow('Kalya', 'Will you visit me',
-                        'status image2.png', 2, context),
-                    buildConversationRow('Mary', 'I ate your ...',
-                        'status image2.png', 6, context),
-                    buildConversationRow('Hellen', 'Are you with Kayla again',
-                        'status image2.png', 0, context),
+                    GestureDetector(
+                      child: settingsPageTile('Settings', 'privacy, security',
+                          'account image.png', 0, context),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SettingPage(),
+                        ));
+                      },
+                    ),
+                    GestureDetector(
+                      child: settingsPageTile('Notification', 'Meassage, group',
+                          'notification image.png', 2, context),
+                      onTap: () {},
+                    ),
+                    GestureDetector(
+                      child: settingsPageTile(
+                          'Help',
+                          'Help center, contact Us ,Privacy Policy',
+                          'help image.png',
+                          6,
+                          context),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HelpCenter(),
+                        ));
+                      },
+                    ),
+                    // buildConversationRow('Hellen', 'Are you with Kayla again',
+                    //     'status image2.png', 0, context),
                   ],
                 ),
               ))

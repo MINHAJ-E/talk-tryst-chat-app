@@ -11,9 +11,10 @@ class UserAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 32,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       child: CircleAvatar(
         radius: 29,
+        backgroundColor: Colors.transparent,
         backgroundImage: Image.asset('assets/$filename').image,
       ),
     );

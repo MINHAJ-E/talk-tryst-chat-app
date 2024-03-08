@@ -76,7 +76,7 @@ class _LogInScreenState extends State<LogInScreen> {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const SignUp()));
+                    MaterialPageRoute(builder: (context) => const VerifyOtp()));
               },
               child: const Text("Start"),
               style: ElevatedButton.styleFrom(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/view/home/widget/build_conversation.dart';
+import 'package:talk_tryst/view/screens/widget/contact_tile.dart';
+import 'package:talk_tryst/view/screens/widget/create_group_page.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
@@ -70,22 +72,41 @@ class _ContactScreenState extends State<ContactScreen> {
                 child: ListView(
                   padding: const EdgeInsets.only(left: 25),
                   children: [
-                    buildConversationRow('Laura', 'Hello, how are you',
-                        'status image1.png', 0, context),
-                    buildConversationRow('Kalya', 'Will you visit me',
-                        'status image2.png', 2, context),
-                    buildConversationRow('Mary', 'I ate your ...',
-                        'status image2.png', 6, context),
-                    buildConversationRow('Hellen', 'Are you with Kayla again',
-                        'status image2.png', 0, context),
-                    buildConversationRow('Louren', 'Barrow money please',
-                        'status image2.png', 3, context),
-                    buildConversationRow(
-                        'Tom', 'Hey, whatsup', 'status image2.png', 0, context),
-                    buildConversationRow('Laura', 'Helle, how are you',
-                        'status image2.png', 0, context),
-                    buildConversationRow('Laura', 'Helle, how are you',
-                        'status image2.png', 0, context),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "My Contacts",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          GestureDetector(
+                            child: const Text(
+                              "Create Groups",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => CreateGroup(),
+                              ));
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                    cotactTile('Laura', 'status image1.png', 0, context),
+                    cotactTile('Kalya', 'status image2.png', 2, context),
+                    cotactTile('Mary', 'status image2.png', 6, context),
+                    cotactTile('Hellen', 'status image2.png', 0, context),
+                    cotactTile('Louren', 'status image2.png', 3, context),
+                    cotactTile('Tom', 'status image2.png', 0, context),
+                    cotactTile('Laura', 'status image2.png', 0, context),
+                    cotactTile('Laura', 'status image2.png', 0, context),
                   ],
                 ),
               ))

@@ -3,6 +3,7 @@ import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/view/home/widget/build_conversation.dart';
 import 'package:talk_tryst/view/home/widget/contact_avatars.dart';
 import 'package:talk_tryst/view/screens/chat_scree.dart';
+import 'package:talk_tryst/view/screens/widget/calls_tile.dart';
 
 class CallsScreen extends StatefulWidget {
   const CallsScreen({super.key});
@@ -72,21 +73,21 @@ class _CallsScreenState extends State<CallsScreen> {
                 child: ListView(
                   padding: const EdgeInsets.only(left: 25),
                   children: [
-                    buildConversationRow('Laura', 'Hello, how are you',
-                        'status image1.png', 0, context),
-                    buildConversationRow('Kalya', 'Will you visit me',
+                    callsTile('Laura', 'Today, 09:30 AM', 'status image1.png',
+                        0, context),
+                    callsTile('Kalya', 'Yesterday, 09:30 AM',
                         'status image2.png', 2, context),
-                    buildConversationRow('Mary', 'I ate your ...',
-                        'status image2.png', 6, context),
-                    buildConversationRow('Hellen', 'Are you with Kayla again',
-                        'status image2.png', 0, context),
-                    buildConversationRow('Louren', 'Barrow money please',
-                        'status image2.png', 3, context),
-                    buildConversationRow(
-                        'Tom', 'Hey, whatsup', 'status image2.png', 0, context),
-                    buildConversationRow('Laura', 'Helle, how are you',
-                        'status image2.png', 0, context),
-                    buildConversationRow('Laura', 'Helle, how are you',
+                    callsTile('Mary', 'Monday, 09:30 AM', 'status image2.png',
+                        6, context),
+                    callsTile('Hellen', 'Today, 09:30 AM', 'status image2.png',
+                        0, context),
+                    callsTile('Louren', 'Today, 09:30 AM', 'status image2.png',
+                        3, context),
+                    callsTile('Tom', 'Sunday, 09:30 AM', 'status image2.png', 0,
+                        context),
+                    callsTile('Laura', 'Today, 09:30 AM', 'status image2.png',
+                        0, context),
+                    callsTile('Laura', '2,3,2024, 09:30 AM',
                         'status image2.png', 0, context),
                   ],
                 ),

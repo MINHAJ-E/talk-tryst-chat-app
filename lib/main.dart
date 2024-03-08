@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_tryst/controller/bottom_provider.dart';
-import 'package:talk_tryst/view/splash_screen.dart';
+import 'package:talk_tryst/view/splash_screen/splash_screen.dart';
 import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
 void main() {
