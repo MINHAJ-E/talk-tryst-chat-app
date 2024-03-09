@@ -4,7 +4,7 @@ import 'package:talk_tryst/view/home/widget/user_avatar.dart';
 import 'package:talk_tryst/view/screens/chat_scree.dart';
 
 Column cotactTile(
-    String name, String filename, int msgCount, BuildContext context) {
+    String name, String filename, String subtitle, BuildContext context) {
   return Column(
     children: [
       Row(
@@ -22,6 +22,10 @@ Column cotactTile(
                 children: [
                   Text(
                     name,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    subtitle,
                     style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(

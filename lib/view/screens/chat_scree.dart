@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
+import 'package:talk_tryst/view/screens/widget/bottom_sheet.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -77,9 +78,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
-                    child: Icon(
-                      CupertinoIcons.paperclip,
-                      color: Colors.grey[700],
+                    child: GestureDetector(
+                      child: Icon(
+                        CupertinoIcons.paperclip,
+                        color: Colors.grey[700],
+                      ),
+                      onTap: () {
+                        bottomsheet(context);
+                      },
                     ),
                   ),
                   Container(
@@ -129,5 +135,14 @@ class _ChatScreenState extends State<ChatScreen> {
             )
           ],
         ));
+  }
+
+  bottomsheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return const BottomSheettt();
+      },
+    );
   }
 }

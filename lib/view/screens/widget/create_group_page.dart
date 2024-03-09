@@ -56,14 +56,22 @@ class _CreateGroupState extends State<CreateGroup> {
                         ],
                       ),
                     ),
-                    cotactTile('Laura', 'status image1.png', 0, context),
-                    cotactTile('Kalya', 'status image2.png', 2, context),
-                    cotactTile('Mary', 'status image2.png', 6, context),
-                    cotactTile('Hellen', 'status image2.png', 0, context),
-                    cotactTile('Louren', 'status image2.png', 3, context),
-                    cotactTile('Tom', 'status image2.png', 0, context),
-                    cotactTile('Laura', 'status image2.png', 0, context),
-                    cotactTile('Laura', 'status image2.png', 0, context),
+                    cotactTile(
+                        'Laura', 'status image1.png', "1234567890", context),
+                    cotactTile(
+                        'Kalya', 'status image2.png', "1234567890", context),
+                    cotactTile(
+                        'Mary', 'status image2.png', "1234567890", context),
+                    cotactTile(
+                        'Hellen', 'status image2.png', "1234567890", context),
+                    cotactTile(
+                        'Louren', 'status image2.png', "1234567890", context),
+                    cotactTile(
+                        'Tom', 'status image2.png', "1234567890", context),
+                    cotactTile(
+                        'Laura', 'status image2.png', "1234567890", context),
+                    cotactTile(
+                        'Laura', 'status image2.png', "1234567890", context),
                   ],
                 ),
               ))

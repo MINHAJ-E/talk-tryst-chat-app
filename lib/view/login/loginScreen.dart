@@ -89,6 +89,34 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Not a member?',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                ),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const SignUp()));
+                },
+                child: const Text(
+                  'Register Now',
+                  style: TextStyle(
+                      color: Colors.blue, fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );

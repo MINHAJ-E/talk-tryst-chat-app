@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
+import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/signup/create_account.dart';
+import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
 class VerifyOtp extends StatefulWidget {
   const VerifyOtp({super.key});
@@ -66,7 +68,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const SignUp()));
+                    MaterialPageRoute(builder: (context) => const BottomBar()));
               },
               child: Text("Start"),
               style: ElevatedButton.styleFrom(
