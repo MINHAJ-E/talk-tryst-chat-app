@@ -40,7 +40,7 @@ class _SettingScreenState extends State<SettingScreen> {
             ],
           ),
           Positioned(
-              top: 320,
+              top: 430,
               left: 0,
               right: 0,
               bottom: 0,

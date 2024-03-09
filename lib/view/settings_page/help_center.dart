@@ -11,6 +11,7 @@ class HelpCenter extends StatelessWidget {
       backgroundColor: BGColors.BackGroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           "Help Center",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -19,10 +20,10 @@ class HelpCenter extends StatelessWidget {
       ),
       body: Column(
         children: [
+          settingsPageTile("Help center", "message", "customer-service (1).png",
+              10, context),
           settingsPageTile(
-              "Help center", "message", "customer-service.png", 10, context),
-          settingsPageTile(
-              "App info", "message", "information.png", 10, context),
+              "App info", "message", "information (1).png", 10, context),
           settingsPageTile("Terms and condition", "message",
               "terms-and-conditions.png", 10, context),
         ],

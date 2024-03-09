@@ -16,6 +16,7 @@ class _CreateGroupState extends State<CreateGroup> {
       backgroundColor: BGColors.BackGroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Stack(
         children: [

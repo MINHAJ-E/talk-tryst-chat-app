@@ -36,7 +36,7 @@ Column callsTile(String name, String message, String filename, int msgCount,
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 25, top: 5),
+            padding: const EdgeInsets.only(right: 25, top: 20),
             child: Row(
               children: [
                 GestureDetector(
