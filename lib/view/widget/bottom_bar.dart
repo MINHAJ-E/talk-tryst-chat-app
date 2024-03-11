@@ -8,7 +8,7 @@ import 'package:talk_tryst/view/screens/contact_screen.dart';
 import 'package:talk_tryst/view/screens/settings_screen.dart';
 
 class BottomBar extends StatelessWidget {
-  const BottomBar({super.key});
+  BottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,29 +21,33 @@ class BottomBar extends StatelessWidget {
             currentIndex: provider.selectedindex,
             type: BottomNavigationBarType.fixed,
             onTap: (index) {
-              // Use the provider to update the selected index
               context.read<BottomProvider>().pageNavigator(index);
             },
+            selectedIconTheme: IconThemeData(
+              color: Colors.white,
+            ),
             items: const [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.message_sharp), label: 'Meassage'),
+                icon: Icon(Icons.message_sharp),
+                label: 'Meassage',
+              ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.call_sharp), label: 'Calls'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.contact_page), label: 'Contact'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: 'Settins'),
+                  icon: Icon(Icons.person), label: 'Profile'),
             ],
           ),
         );
       },
     );
   }
-}
 
-final List<Widget> _pages = [
-  HomeScreen(),
-  CallsScreen(),
-  ContactScreen(),
-  SettingScreen(),
-];
+  final List<Widget> _pages = [
+    HomeScreen(),
+    CallsScreen(),
+    ContactScreen(),
+    SettingScreen(),
+  ];
+}

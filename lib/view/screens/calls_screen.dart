@@ -2,19 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/view/home/widget/build_conversation.dart';
 import 'package:talk_tryst/view/home/widget/contact_avatars.dart';
-import 'package:talk_tryst/view/screens/chat_scree.dart';
 import 'package:talk_tryst/view/screens/widget/calls_tile.dart';
 
-class CallsScreen extends StatefulWidget {
-  const CallsScreen({super.key});
+class CallsScreen extends StatelessWidget {
+  const CallsScreen({Key? key});
 
-  @override
-  State<CallsScreen> createState() => _CallsScreenState();
-}
-
-class _CallsScreenState extends State<CallsScreen> {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: BGColors.BackGroundColor,
       body: Stack(
@@ -22,7 +17,10 @@ class _CallsScreenState extends State<CallsScreen> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 70, left: 10, right: 10),
+                padding: EdgeInsets.only(
+                    top: size.height * 0.07,
+                    left: size.width * 0.03,
+                    right: size.width * 0.03),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -44,7 +42,6 @@ class _CallsScreenState extends State<CallsScreen> {
                     ),
                     CircleAvatar(
                       backgroundColor: Colors.black,
-                      // backgroundImage: AssetImage("assets/call-user.png"),
                       child: IconButton(
                           onPressed: () {},
                           icon: const Icon(
@@ -58,20 +55,20 @@ class _CallsScreenState extends State<CallsScreen> {
             ],
           ),
           Positioned(
-              top: 120,
+              top: size.height * 0.15,
               left: 0,
               right: 0,
               bottom: 0,
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: EdgeInsets.symmetric(vertical: size.height * 0.015),
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(size.width * 0.1),
+                      topRight: Radius.circular(size.width * 0.1)),
                   color: BGColors.BGBTColor,
                 ),
                 child: ListView(
-                  padding: const EdgeInsets.only(left: 25),
+                  padding: EdgeInsets.only(left: size.width * 0.05),
                   children: [
                     callsTile('Laura', 'Today, 09:30 AM', 'status image1.png',
                         context),

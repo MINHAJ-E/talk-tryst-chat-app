@@ -5,7 +5,7 @@ import 'package:talk_tryst/view/splash_screen/splash_screen.dart';
 import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           create: (context) => BottomProvider(),
         ),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),
       ),

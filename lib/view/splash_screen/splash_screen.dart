@@ -8,53 +8,49 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: BGColors.BackGroundColor,
       // appBar: AppBar(
       //   backgroundColor: Colors.amber,
       // ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 60),
+        padding: EdgeInsets.only(left: size.width * 0.2),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const SizedBox(
-              height: 200,
+            SizedBox(
+              height: size.height * 0.2,
             ),
             Image.asset("assets/appimage.png"),
-            const SizedBox(
-              height: 130,
+            SizedBox(
+              height: size.height * 0.13,
             ),
-            const Text(
+            Text(
               "welcome to",
-              style: TextStyle(color: Colors.white, fontSize: 27),
+              style:
+                  TextStyle(color: Colors.white, fontSize: size.width * 0.05),
             ),
-            const Text(
+            Text(
               "Talk Tryst",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: size.width * 0.075,
                   color: Colors.white),
             ),
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: size.height * 0.05,
             ),
-            // MainButtons(
-            //     text: "Start",
-            //     navi: () {
-            //       Navigator.of(context).push(MaterialPageRoute(
-            //           builder: (context) => const LogInScreen()));
-            //     }),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const LogInScreen()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LogInScreen()));
               },
               child: Text("Start"),
               style: ElevatedButton.styleFrom(
                 primary: BGColors.BGBTColor,
                 onPrimary: Colors.white,
-                minimumSize: Size(300, 60),
+                minimumSize: Size(size.width * 0.6, size.height * 0.07),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),

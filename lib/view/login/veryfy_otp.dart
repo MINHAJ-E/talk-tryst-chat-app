@@ -4,28 +4,26 @@ import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/signup/create_account.dart';
 import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
-class VerifyOtp extends StatefulWidget {
+class VerifyOtp extends StatelessWidget {
   const VerifyOtp({super.key});
 
   @override
-  State<VerifyOtp> createState() => _VerifyOtpState();
-}
-
-class _VerifyOtpState extends State<VerifyOtp> {
-  @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: BGColors.BackGroundColor,
       body: Column(
-        crossAxisAlignment:
-            CrossAxisAlignment.start, // Align children to the start
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 200,
+          SizedBox(
+            height: size.height * 0.2,
           ),
           Center(child: Image.asset("assets/appimage.png")),
           SizedBox(
-            height: 40,
+            height: size.height * 0.04,
           ),
           Center(
             child: Text(
@@ -34,23 +32,23 @@ class _VerifyOtpState extends State<VerifyOtp> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: size.height * 0.02,
           ),
           SizedBox(
-            height: 40,
+            height: size.height * 0.04,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15),
+            padding: EdgeInsets.only(left: size.width * 0.03),
             child: Container(
-              width: 380,
+              width: size.width * 0.95,
               child: TextFormField(
-                textAlign: TextAlign.start, // Align the text input to the start
+                textAlign: TextAlign.start,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'verify otp',
-                  contentPadding: EdgeInsets.all(15),
+                  contentPadding: EdgeInsets.all(size.width * 0.05),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(45),
+                    borderRadius: BorderRadius.circular(size.width * 0.12),
                     borderSide: BorderSide(color: Colors.transparent),
                   ),
                   filled: true,
@@ -61,22 +59,22 @@ class _VerifyOtpState extends State<VerifyOtp> {
             ),
           ),
           SizedBox(
-            height: 50,
+            height: size.height * 0.05,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: size.width * 0.05),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const BottomBar()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => BottomBar()));
               },
               child: Text("Start"),
               style: ElevatedButton.styleFrom(
                 primary: BGColors.BGBTColor,
                 onPrimary: Colors.white,
-                minimumSize: Size(370, 60),
+                minimumSize: Size(size.width * 0.9, size.height * 0.08),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(size.width * 0.03),
                 ),
               ),
             ),

@@ -4,16 +4,12 @@ import 'package:talk_tryst/view/home/widget/build_conversation.dart';
 import 'package:talk_tryst/view/screens/widget/contact_tile.dart';
 import 'package:talk_tryst/view/screens/widget/create_group_page.dart';
 
-class ContactScreen extends StatefulWidget {
-  const ContactScreen({super.key});
+class ContactScreen extends StatelessWidget {
+  const ContactScreen({Key? key});
 
-  @override
-  State<ContactScreen> createState() => _ContactScreenState();
-}
-
-class _ContactScreenState extends State<ContactScreen> {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: BGColors.BackGroundColor,
       body: Stack(
@@ -21,7 +17,10 @@ class _ContactScreenState extends State<ContactScreen> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 70, left: 10, right: 10),
+                padding: EdgeInsets.only(
+                    top: size.height * 0.07,
+                    left: size.width * 0.03,
+                    right: size.width * 0.03),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -43,7 +42,6 @@ class _ContactScreenState extends State<ContactScreen> {
                     ),
                     CircleAvatar(
                       backgroundColor: Colors.black,
-                      // backgroundImage: AssetImage("assets/call-user.png"),
                       child: IconButton(
                           onPressed: () {},
                           icon: const Icon(
@@ -57,20 +55,20 @@ class _ContactScreenState extends State<ContactScreen> {
             ],
           ),
           Positioned(
-              top: 120,
+              top: size.height * 0.15,
               left: 0,
               right: 0,
               bottom: 0,
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: EdgeInsets.symmetric(vertical: size.height * 0.015),
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(size.width * 0.1),
+                      topRight: Radius.circular(size.width * 0.1)),
                   color: BGColors.BGBTColor,
                 ),
                 child: ListView(
-                  padding: const EdgeInsets.only(left: 25),
+                  padding: EdgeInsets.only(left: size.width * 0.05),
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -84,11 +82,14 @@ class _ContactScreenState extends State<ContactScreen> {
                                 fontWeight: FontWeight.bold),
                           ),
                           GestureDetector(
-                            child: const Text(
-                              "Create Groups",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                            child: Padding(
+                              padding: EdgeInsets.only(right: size.width * 0.1),
+                              child: const Text(
+                                "Create Groups",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(

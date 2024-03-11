@@ -3,68 +3,66 @@ import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
-class SignUp extends StatefulWidget {
+class SignUp extends StatelessWidget {
   const SignUp({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
-}
-
-class _SignUpState extends State<SignUp> {
-  @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: BGColors.BackGroundColor,
       body: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 100,
+            height: size.height * 0.1,
           ),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: size.width * 0.05),
               child: Text(
                 "Create \n Account",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: size.width * 0.10,
                 ),
               ),
             ),
           ),
           SizedBox(
-            height: 40,
+            height: size.height * 0.04,
           ),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: size.width * 0.05),
               child: CircleAvatar(
-                radius: 60,
+                radius: size.width * 0.09,
                 backgroundColor: Colors.blueAccent,
                 backgroundImage: AssetImage('assets/image.png'),
               ),
             ),
           ),
           SizedBox(
-            height: 30,
+            height: size.height * 0.03,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 0),
+            padding: EdgeInsets.only(left: size.width * 0.01),
             child: Container(
-              width: 380,
+              width: size.width * 0.95,
               child: TextFormField(
-                textAlign: TextAlign.start, // Align the text input to the start
+                textAlign: TextAlign.start,
                 style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'username',
-                  contentPadding: const EdgeInsets.all(15),
+                  contentPadding: EdgeInsets.all(size.width * 0.05),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(45),
-                    borderSide: const BorderSide(color: Colors.transparent),
+                    borderRadius: BorderRadius.circular(size.width * 0.12),
+                    borderSide: BorderSide(color: Colors.transparent),
                   ),
                   filled: true,
                   fillColor: Colors.white,
@@ -74,21 +72,21 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: size.height * 0.02,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 0),
+            padding: EdgeInsets.only(left: size.width * 0.01),
             child: Container(
-              width: 380,
+              width: size.width * 0.95,
               child: TextFormField(
-                textAlign: TextAlign.start, // Align the text input to the start
+                textAlign: TextAlign.start,
                 style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'phone number',
-                  contentPadding: const EdgeInsets.all(15),
+                  contentPadding: EdgeInsets.all(size.width * 0.05),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(45),
-                    borderSide: const BorderSide(color: Colors.transparent),
+                    borderRadius: BorderRadius.circular(size.width * 0.12),
+                    borderSide: BorderSide(color: Colors.transparent),
                   ),
                   filled: true,
                   fillColor: Colors.white,
@@ -98,21 +96,21 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: size.height * 0.02,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 0),
+            padding: EdgeInsets.only(left: size.width * 0.01),
             child: Container(
-              width: 380,
+              width: size.width * 0.95,
               child: TextFormField(
-                textAlign: TextAlign.start, // Align the text input to the start
+                textAlign: TextAlign.start,
                 style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'otp',
-                  contentPadding: const EdgeInsets.all(15),
+                  contentPadding: EdgeInsets.all(size.width * 0.05),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(45),
-                    borderSide: const BorderSide(color: Colors.transparent),
+                    borderRadius: BorderRadius.circular(size.width * 0.12),
+                    borderSide: BorderSide(color: Colors.transparent),
                   ),
                   filled: true,
                   fillColor: Colors.white,
@@ -122,22 +120,22 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
           SizedBox(
-            height: 70,
+            height: size.height * 0.05,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: size.width * 0.01),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const BottomBar()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => BottomBar()));
               },
               child: Text("Done"),
               style: ElevatedButton.styleFrom(
                 primary: BGColors.BGBTColor,
                 onPrimary: Colors.white,
-                minimumSize: Size(370, 60),
+                minimumSize: Size(size.width * 0.9, size.height * 0.08),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(size.width * 0.03),
                 ),
               ),
             ),
