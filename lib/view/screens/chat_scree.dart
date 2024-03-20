@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
-import 'package:talk_tryst/view/screens/widget/bottom_sheet.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
+
+// ═════════════════════════════════════════════════════════════════════════════
 
   @override
   Widget build(BuildContext context) {
@@ -66,13 +67,13 @@ class ChatScreen extends StatelessWidget {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return _buildBody(constraints);
+          return _buildBody(context, constraints);
         },
       ),
     );
   }
 
-  Widget _buildBody(BoxConstraints constraints) {
+  Widget _buildBody(BuildContext context, BoxConstraints constraints) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,13 +84,14 @@ class ChatScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: GestureDetector(
-                  child: Icon(
-                    CupertinoIcons.paperclip,
-                    color: Colors.grey[700],
-                  ),
-                  onTap: () {
-                    // bottomSheet(context);
+                child: IconButton(
+                  icon: Icon(Icons.attach_file),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (builder) => bottomSheett(context),
+                    );
                   },
                 ),
               ),
@@ -109,9 +111,9 @@ class ChatScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10),
                       width: constraints.maxWidth * 0.30,
                       height: constraints.maxHeight * 0.10,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: const TextField(
+                      child: const Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: TextField(
                           style: TextStyle(color: Colors.white, fontSize: 20),
                           decoration: InputDecoration(
                             hintText: 'Message',
@@ -131,7 +133,7 @@ class ChatScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Image.asset("assets/mic (1).png"),
+              // Image.asset("assets/mic (1).png"),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Image.asset("assets/send.png"),
@@ -143,12 +145,83 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  void bottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return const BottomSheettt();
-      },
+  Widget bottomSheett(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      height: 278,
+      width: MediaQuery.of(context).size.width,
+      child: Card(
+        color: BGColors.BackGroundColor,
+        margin: const EdgeInsets.all(18.0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          child: Column( 
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  iconCreation(
+                      Icons.insert_drive_file, Colors.indigo, "Document"),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  iconCreation(Icons.camera_alt, Colors.pink, "Camera"),
+                  SizedBox(  
+                    width: 40,
+                  ),
+                  iconCreation(Icons.insert_photo, Colors.purple, "Gallery"),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  iconCreation(Icons.headset, Colors.orange, "Audio"),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  iconCreation(Icons.location_pin, Colors.teal, "Location"),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  iconCreation(Icons.person, Colors.blue, "Contact"),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget iconCreation(IconData icons, Color color, String text) {
+    return InkWell(
+      onTap: () {},
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundColor: color,
+            child: Icon(
+              icons,
+              size: 29,
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 12,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

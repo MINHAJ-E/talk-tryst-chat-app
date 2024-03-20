@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/view/login/loginScreen.dart';
-import 'package:talk_tryst/view/widget/main_buttons.dart';
+import 'package:talk_tryst/view/screens/phone_auth.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -15,14 +15,17 @@ class SplashScreen extends StatelessWidget {
       //   backgroundColor: Colors.amber,
       // ),
       body: Padding(
-        padding: EdgeInsets.only(left: size.width * 0.2),
+        padding: EdgeInsets.only(left: size.width * 0.13),
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SizedBox(
               height: size.height * 0.2,
             ),
-            Image.asset("assets/appimage.png"),
+            Image.asset(
+              "assets/speech-bubble (6).png",
+              filterQuality: FilterQuality.high,
+            ),
             SizedBox(
               height: size.height * 0.13,
             ),
@@ -44,17 +47,17 @@ class SplashScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => LogInScreen()));
+                    MaterialPageRoute(builder: (context) => PhoneAuthPage()));
               },
-              child: Text("Start"),
               style: ElevatedButton.styleFrom(
-                primary: BGColors.BGBTColor,
-                onPrimary: Colors.white,
+                foregroundColor: Colors.white,
+                backgroundColor: BGColors.BGBTColor,
                 minimumSize: Size(size.width * 0.6, size.height * 0.07),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+              child: const Text("Start"),
             ),
           ],
         ),

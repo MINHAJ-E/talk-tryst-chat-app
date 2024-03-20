@@ -1,7 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
-import 'package:talk_tryst/view/home/widget/alert_dialog.dart';
-import 'package:talk_tryst/view/home/widget/build_conversation.dart';
 import 'package:talk_tryst/view/home/widget/settings_page_tile.dart';
 import 'package:talk_tryst/view/settings_page/help_center.dart';
 import 'package:talk_tryst/view/settings_page/settings_page.dart';
@@ -57,11 +57,12 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(
                     height: size.height * 0.2,
                     child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         CircleAvatar(
                           radius: size.width * 0.12,
                           backgroundImage:
-                              AssetImage("assets/status image3.png"),
+                              const AssetImage("assets/status image3.png"),
                         ),
                         Padding(
                           padding: EdgeInsets.only(
@@ -85,7 +86,9 @@ class SettingScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                        )
+                        ),
+                        IconButton(
+                            onPressed: () {}, icon: const Icon(Icons.edit))
                       ],
                     ),
                   ),
@@ -94,7 +97,7 @@ class SettingScreen extends StatelessWidget {
                         'account image.png', 0, context),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => SettingPage(),
+                        builder: (context) => const SettingPage(),
                       ));
                     },
                   ),
@@ -112,7 +115,7 @@ class SettingScreen extends StatelessWidget {
                         context),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => HelpCenter(),
+                        builder: (context) => const HelpCenter(),
                       ));
                     },
                   ),

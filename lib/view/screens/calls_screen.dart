@@ -1,7 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
-import 'package:talk_tryst/view/home/widget/build_conversation.dart';
-import 'package:talk_tryst/view/home/widget/contact_avatars.dart';
 import 'package:talk_tryst/view/screens/widget/calls_tile.dart';
 
 class CallsScreen extends StatelessWidget {

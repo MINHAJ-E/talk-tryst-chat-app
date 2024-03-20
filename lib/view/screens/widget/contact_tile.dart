@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/home/widget/user_avatar.dart';
-import 'package:talk_tryst/view/screens/chat_scree.dart';
 
 Column cotactTile(
     String name, String filename, String subtitle, BuildContext context) {

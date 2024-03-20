@@ -1,6 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:talk_tryst/constants/constants.dart';
-import 'package:talk_tryst/view/home/widget/build_conversation.dart';
 import 'package:talk_tryst/view/screens/widget/contact_tile.dart';
 import 'package:talk_tryst/view/screens/widget/create_group_page.dart';
 
@@ -93,7 +94,7 @@ class ContactScreen extends StatelessWidget {
                             ),
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CreateGroup(),
+                                builder: (context) => const CreateGroup(),
                               ));
                             },
                           )

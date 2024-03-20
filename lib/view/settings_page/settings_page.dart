@@ -16,8 +16,8 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: BGColors.BackGroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(color: Colors.white),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text(
           "Settings",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
@@ -34,15 +34,15 @@ class _SettingPageState extends State<SettingPage> {
           //     "Privacy policy", "message", "privacy-policy.png", 10, context),
           ElevatedButton(
             onPressed: () {},
-            child: Text("Log Out"),
             style: ElevatedButton.styleFrom(
-              primary: BGColors.BGBTColor,
-              onPrimary: Colors.white,
-              minimumSize: Size(300, 60),
+              foregroundColor: Colors.white,
+              backgroundColor: BGColors.BGBTColor,
+              minimumSize: const Size(300, 60),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
+            child: const Text("Log Out"),
           ),
         ],
       ),

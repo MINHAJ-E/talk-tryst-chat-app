@@ -4,8 +4,8 @@ import 'package:talk_tryst/view/home/widget/settings_page_tile.dart';
 
 AlertDialog alert(BuildContext context) {
   return AlertDialog(
-    title: Text('ADD TODO TASKS'),
-    content: Container(
+    title: const Text('ADD TODO TASKS'),
+    content: SizedBox(
       height: 400,
       child: Column(
         children: [
@@ -19,7 +19,7 @@ AlertDialog alert(BuildContext context) {
         onPressed: () {
           Navigator.of(context).pop();
         },
-        child: Text('CANCEL'),
+        child: const Text('CANCEL'),
       ),
     ],
     elevation: 24.0,

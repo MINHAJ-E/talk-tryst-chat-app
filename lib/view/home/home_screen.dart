@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                       backgroundColor: Colors.black,
                       child: IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.search,
                           color: Colors.white,
                         ),
@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                         fontSize: size.width * 0.06,
                       ),
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundImage: AssetImage("assets/image.png"),
                     ),
                   ],

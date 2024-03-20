@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184553814975",
+    "project_id": "talk-tryst",
+    "storage_bucket": "talk-tryst.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184553814975:android:c260918d5dcf4bcee5bf0a",
+        "android_client_info": {
+          "package_name": "com.example.talk_tryst"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9I6OFFDw6W6MPN4dnwQWUQU3W0Rarc9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

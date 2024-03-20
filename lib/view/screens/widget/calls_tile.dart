@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/home/widget/user_avatar.dart';
-import 'package:talk_tryst/view/screens/chat_scree.dart';
 
 Column callsTile(
     String name, String message, String filename, BuildContext context) {
@@ -43,7 +41,7 @@ Column callsTile(
                   child: Image.asset('assets/Call.png'),
                   onTap: () {},
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 GestureDetector(
                   child: Image.asset('assets/Video.png'),
                   onTap: () {},

@@ -11,8 +11,8 @@ class HelpCenter extends StatelessWidget {
       backgroundColor: BGColors.BackGroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(color: Colors.white),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text(
           "Help Center",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),

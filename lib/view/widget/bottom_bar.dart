@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/controller/bottom_provider.dart';
 import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/screens/calls_screen.dart';
@@ -17,13 +16,13 @@ class BottomBar extends StatelessWidget {
         return Scaffold(
           body: _pages[provider.selectedindex],
           bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Color(0xFF313A53),
+            backgroundColor: const Color(0xFF313A53),
             currentIndex: provider.selectedindex,
             type: BottomNavigationBarType.fixed,
             onTap: (index) {
               context.read<BottomProvider>().pageNavigator(index);
             },
-            selectedIconTheme: IconThemeData(
+            selectedIconTheme: const IconThemeData(
               color: Colors.white,
             ),
             items: const [
@@ -45,9 +44,9 @@ class BottomBar extends StatelessWidget {
   }
 
   final List<Widget> _pages = [
-    HomeScreen(),
-    CallsScreen(),
-    ContactScreen(),
-    SettingScreen(),
+    const HomeScreen(),
+    const CallsScreen(),
+    const ContactScreen(),
+    const SettingScreen(),
   ];
 }
