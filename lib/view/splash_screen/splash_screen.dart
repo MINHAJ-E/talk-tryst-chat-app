@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talk_tryst/auth_gateway.dart';
 import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/view/login/loginScreen.dart';
 import 'package:talk_tryst/view/screens/phone_auth.dart';
@@ -47,7 +48,8 @@ class SplashScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => PhoneAuthPage()));
+                    // MaterialPageRoute(builder: (context) => PhoneAuthPage()));
+                    MaterialPageRoute(builder: (context) => AuthGate()));
               },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,

@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_tryst/constants/constants.dart';
-import 'package:talk_tryst/controller/auth_provider.dart';
+import 'package:talk_tryst/controller/auth_controller.dart';
 import 'package:talk_tryst/view/screens/widget/abhi/cstm_button_phone.dart';
 import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
-class OtpScreen extends StatelessWidget {
-  OtpScreen({super.key, required this.verificationid, this.email, this.name});
+class OtpScreenn extends StatelessWidget {
+  OtpScreenn(
+      {super.key,
+      required this.verificationid,
+      this.email,
+      this.name,
+      this.phoneNumber});
 
   final String verificationid;
   final String? name;
   final String? email;
+  final String? phoneNumber;
   final TextEditingController otpcontroller = TextEditingController();
 
   @override
@@ -101,7 +107,7 @@ class OtpScreen extends StatelessWidget {
             ),
             CustomButtonPhone(
               onPressed: () {
-                verifyOtp(context);
+                verifyOtp(context, otpcontroller.text, phoneNumber!);
               },
               size: size,
               buttonname: "Verify otp",
@@ -112,14 +118,20 @@ class OtpScreen extends StatelessWidget {
     );
   }
 
-  void verifyOtp(BuildContext context) {
-    Provider.of<AuthProviders>(context, listen: false)
-        .verifyOtp(verificationid, otpcontroller.text, () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => BottomBar(),
-          ));
-    }, name!, email!);
+  void verifyOtp(context, String userotp, String phonenumber) {
+    final authPro = Provider.of<AuthenticationProvider>(context, listen: false);
+    authPro.verifyOtp(
+        verificationId: verificationid,
+        otp: userotp,
+        email: email!,
+        name: name!,
+        phone: phonenumber,
+        onSuccess: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BottomBar(),
+              ));
+        });
   }
 }
