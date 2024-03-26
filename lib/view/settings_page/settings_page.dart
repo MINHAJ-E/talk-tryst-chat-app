@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:talk_tryst/constants/constants.dart';
+import 'package:talk_tryst/controller/auth_controller.dart';
 import 'package:talk_tryst/view/home/widget/settings_page_tile.dart';
 
 class SettingPage extends StatefulWidget {
@@ -33,7 +35,10 @@ class _SettingPageState extends State<SettingPage> {
           // settingsPageTile(
           //     "Privacy policy", "message", "privacy-policy.png", 10, context),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Provider.of<AuthenticationProvider>(context, listen: false)
+                  .signOut();
+            },
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
               backgroundColor: BGColors.BGBTColor,

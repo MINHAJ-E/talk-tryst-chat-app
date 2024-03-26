@@ -4,19 +4,20 @@ import 'package:provider/provider.dart';
 import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/controller/auth_controller.dart';
 import 'package:talk_tryst/view/screens/widget/abhi/cstm_button_phone.dart';
+import 'package:talk_tryst/view/signup/create_account.dart';
 import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
 class OtpScreenn extends StatelessWidget {
   OtpScreenn(
       {super.key,
       required this.verificationid,
-      this.email,
+      this.bio,
       this.name,
       this.phoneNumber});
 
   final String verificationid;
   final String? name;
-  final String? email;
+  final String? bio;
   final String? phoneNumber;
   final TextEditingController otpcontroller = TextEditingController();
 
@@ -41,8 +42,8 @@ class OtpScreenn extends StatelessWidget {
               height: size.height * 0.2,
             ),
             Center(child: Image.asset("assets/speech-bubble (2).png")),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 30),
+            const Padding(
+              padding: EdgeInsets.only(left: 30, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -51,7 +52,7 @@ class OtpScreenn extends StatelessWidget {
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
                           color: Colors.white)),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -64,8 +65,8 @@ class OtpScreenn extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(30, 20, 30, 20),
               child: Column(
                 children: [
                   Text(
@@ -123,7 +124,7 @@ class OtpScreenn extends StatelessWidget {
     authPro.verifyOtp(
         verificationId: verificationid,
         otp: userotp,
-        email: email!,
+        bio: bio!,
         name: name!,
         phone: phonenumber,
         onSuccess: () {
@@ -131,6 +132,10 @@ class OtpScreenn extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => BottomBar(),
+                // builder: (context) => SetProfile(
+                //   bio: bio!,
+                //   name: name!,
+                // ),
               ));
         });
   }

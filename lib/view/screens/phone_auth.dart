@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/controller/auth_controller.dart';
-import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/screens/widget/abhi/cstm_button_phone.dart';
 import 'package:talk_tryst/view/screens/widget/abhi/cstm_textfield.dart';
 import 'package:talk_tryst/view/screens/widget/abhi/custom_phone_field.dart';
-import 'package:talk_tryst/view/signup/create_account.dart';
 import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
 class PhoneAuthPage extends StatelessWidget {
   PhoneAuthPage({super.key});
 
   final TextEditingController namecontroller = TextEditingController();
-  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController biocontroller = TextEditingController();
   final TextEditingController phonecontroller = TextEditingController();
 
   @override
@@ -105,13 +103,13 @@ class PhoneAuthPage extends StatelessWidget {
                   hintText: "Enter Your Username",
                   controller: namecontroller),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(30, 0, 30, 30),
-              child: CustomTextField(
-                  icons: Icons.mail,
-                  hintText: "Set Bio",
-                  controller: emailcontroller),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(30, 0, 30, 30),
+            //   child: CustomTextField(
+            //       icons: Icons.mail,
+            //       hintText: "Set Bio",
+            //       controller: biocontroller),
+            // ),
             const SizedBox(
               height: 10,
             ),
@@ -122,13 +120,13 @@ class PhoneAuthPage extends StatelessWidget {
                 if (phonenumber.length == 13) {
                   pro.signinWithPhone(
                     name: namecontroller.text,
-                    email: emailcontroller.text,
+                    bio: biocontroller.text,
                     phoneNumber: phonenumber,
                     context: context,
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Please enter a 10-digit phone number.'),
                     ),
                   );

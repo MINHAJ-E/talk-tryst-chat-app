@@ -5,7 +5,9 @@ import 'package:talk_tryst/view/home/widget/contact_avatars.dart';
 import 'package:talk_tryst/view/screens/chat_scree.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

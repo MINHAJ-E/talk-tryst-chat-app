@@ -1,10 +1,21 @@
 // import 'package:flutter/material.dart';
 // import 'package:talk_tryst/constants/constants.dart';
+// import 'package:talk_tryst/view/screens/widget/abhi/cstm_button_phone.dart';
+// import 'package:talk_tryst/view/screens/widget/abhi/cstm_textfield.dart';
 // import 'package:talk_tryst/view/widget/bottom_bar.dart';
 
-// class SignUp extends StatelessWidget {
-//   const SignUp({super.key});
+// class SetProfile extends StatefulWidget {
+//   final String? name;
+//   final String? bio;
+//   const SetProfile({super.key, required this.bio, required this.name});
 
+//   @override
+//   State<SetProfile> createState() => _SetProfileState();
+// }
+
+// class _SetProfileState extends State<SetProfile> {
+//   final TextEditingController namecontroller = TextEditingController();
+//   final TextEditingController biocontroller = TextEditingController();
 //   @override
 //   Widget build(BuildContext context) {
 //     final Size size = MediaQuery.of(context).size;
@@ -50,119 +61,33 @@
 //             height: size.height * 0.03,
 //           ),
 //           Padding(
-//             padding: EdgeInsets.only(left: size.width * 0.01),
-//             child: SizedBox(
-//               width: size.width * 0.95,
-//               child: TextFormField(
-//                 textAlign: TextAlign.start,
-//                 style: const TextStyle(color: Colors.black),
-//                 decoration: InputDecoration(
-//                   hintText: 'username',
-//                   contentPadding: EdgeInsets.all(size.width * 0.05),
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(size.width * 0.12),
-//                     borderSide: const BorderSide(color: Colors.transparent),
-//                   ),
-//                   filled: true,
-//                   fillColor: Colors.white,
-//                 ),
-//                 onChanged: (value) {},
-//               ),
-//             ),
+//             padding: const EdgeInsets.fromLTRB(30, 0, 30, 30),
+//             child: CustomTextField(
+//                 icons: Icons.person,
+//                 hintText: "Enter Your Username",
+//                 controller: namecontroller),
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.fromLTRB(30, 0, 30, 30),
+//             child: CustomTextField(
+//                 icons: Icons.mail,
+//                 hintText: "Set Bio",
+//                 controller: biocontroller),
 //           ),
 //           SizedBox(
 //             height: size.height * 0.02,
 //           ),
-//           Padding(
-//             padding: EdgeInsets.only(left: size.width * 0.01),
-//             child: SizedBox(
-//               width: size.width * 0.95,
-//               child: TextFormField(
-//                 textAlign: TextAlign.start,
-//                 style: const TextStyle(color: Colors.black),
-//                 decoration: InputDecoration(
-//                   hintText: 'phone number',
-//                   contentPadding: EdgeInsets.all(size.width * 0.05),
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(size.width * 0.12),
-//                     borderSide: const BorderSide(color: Colors.transparent),
-//                   ),
-//                   filled: true,
-//                   fillColor: Colors.white,
-//                 ),
-//                 onChanged: (value) {},
-//               ),
-//             ),
-//           ),
-//           SizedBox(
-//             height: size.height * 0.02,
-//           ),
-//           Padding(
-//             padding: EdgeInsets.only(left: size.width * 0.01),
-//             child: SizedBox(
-//               width: size.width * 0.95,
-//               child: TextFormField(
-//                 textAlign: TextAlign.start,
-//                 style: const TextStyle(color: Colors.black),
-//                 decoration: InputDecoration(
-//                   hintText: 'otp',
-//                   contentPadding: EdgeInsets.all(size.width * 0.05),
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(size.width * 0.12),
-//                     borderSide: const BorderSide(color: Colors.transparent),
-//                   ),
-//                   filled: true,
-//                   fillColor: Colors.white,
-//                 ),
-//                 onChanged: (value) {},
-//               ),
-//             ),
-//           ),
-//           SizedBox(
-//             height: size.height * 0.02,
-//           ),
-//           Padding(
-//             padding: EdgeInsets.only(left: size.width * 0.01),
-//             child: SizedBox(
-//               width: size.width * 0.95,
-//               child: TextFormField(
-//                 textAlign: TextAlign.start,
-//                 style: const TextStyle(color: Colors.black),
-//                 decoration: InputDecoration(
-//                   hintText: 'Bio',
-//                   contentPadding: EdgeInsets.all(size.width * 0.05),
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(size.width * 0.12),
-//                     borderSide: const BorderSide(color: Colors.transparent),
-//                   ),
-//                   filled: true,
-//                   fillColor: Colors.white,
-//                 ),
-//                 onChanged: (value) {},
-//               ),
-//             ),
-//           ),
-//           SizedBox(
-//             height: size.height * 0.05,
-//           ),
-//           Padding(
-//             padding: EdgeInsets.only(left: size.width * 0.01),
-//             child: ElevatedButton(
+//           // SizedBox(
+//           //   height: size.height * 0.05,
+//           // ),
+//           CustomButtonPhone(
+//               size: size,
+//               buttonname: "Start",
 //               onPressed: () {
-//                 Navigator.of(context)
-//                     .push(MaterialPageRoute(builder: (context) => BottomBar()));
-//               },
-//               style: ElevatedButton.styleFrom(
-//                 foregroundColor: Colors.white,
-//                 backgroundColor: BGColors.BGBTColor,
-//                 minimumSize: Size(size.width * 0.9, size.height * 0.08),
-//                 shape: RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.circular(size.width * 0.03),
-//                 ),
-//               ),
-//               child: const Text("Done"),
-//             ),
-//           ),
+//                 Navigator.of(context).push(MaterialPageRoute(
+//                   builder: (context) => BottomBar(),
+//                 ));
+//               }),
 //         ],
 //       ),
 //     );
