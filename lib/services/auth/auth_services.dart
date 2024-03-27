@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:talk_tryst/model/user_model.dart';
-import 'package:talk_tryst/view/screens/otp_screen.dart';
+import 'package:talk_tryst/view/login/otp_screen.dart';
 import 'package:talk_tryst/view/widget/aju/otp_verification.dart';
 
 class AuthenticationService {

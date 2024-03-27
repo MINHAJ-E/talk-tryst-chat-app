@@ -1,227 +1,162 @@
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:talk_tryst/constants/constants.dart';
+import 'package:talk_tryst/controller/basic_provider.dart';
+import 'package:talk_tryst/controller/firebase_provider.dart';
+import 'package:talk_tryst/model/user_model.dart';
+import 'package:talk_tryst/services/auth/auth_services.dart';
+import 'package:talk_tryst/services/chat/chat_services.dart';
+import 'package:talk_tryst/view/screens/jassim/chat_buble.dart';
+import 'package:talk_tryst/view/screens/jassim/image_selector_dialog.dart';
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key, required this.user});
+  final UserModel user;
 
-// ═════════════════════════════════════════════════════════════════════════════
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  TextEditingController messagecontroller = TextEditingController();
+  AuthenticationService service = AuthenticationService();
+
+  @override
+  void initState() {
+    super.initState();
+
+    final currentuserid = service.authentication.currentUser!.uid;
+    Provider.of<FirebaseProvider>(context, listen: false)
+        .getMessages(currentuserid, widget.user.userId!);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: BGColors.BackGroundColor,
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: BGColors.BGBTColor,
-        toolbarHeight: 67,
-        leadingWidth: 92,
-        leading: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: Column(
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: const Icon(
-                Icons.arrow_back,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.arrow_back_ios)),
+                  Text(
+                    widget.user.userName!,
+                    style: GoogleFonts.poppins(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        Provider.of<FirebaseProvider>(context, listen: false)
+                            .clearChat(service.authentication.currentUser!.uid,
+                                widget.user.userId!);
+                      },
+                      icon: const Icon(Icons.clear_all_outlined))
+                ],
               ),
             ),
-            const SizedBox(
-              width: 5,
-            ),
-            const CircleAvatar(
-              radius: 22,
-              backgroundImage: AssetImage("assets/status image3.png"),
-            ),
-          ],
-        ),
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Minhaj",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              "Active now",
-              style: TextStyle(fontSize: 13, color: Colors.white),
-            )
-          ],
-        ),
-        actions: [
-          GestureDetector(
-            child: Image.asset('assets/Call.png'),
-            onTap: () {},
-          ),
-          const SizedBox(width: 20),
-          GestureDetector(
-            child: Image.asset('assets/Video.png'),
-            onTap: () {},
-          ),
-          const SizedBox(
-            width: 20,
-          )
-        ],
-      ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return _buildBody(context, constraints);
-        },
-      ),
-    );
-  }
-
-  Widget _buildBody(BuildContext context, BoxConstraints constraints) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(child: Container()),
-        Container(
-          color: BGColors.BGBTColor,
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: IconButton(
-                  icon: Icon(Icons.attach_file),
-                  onPressed: () {
-                    showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (builder) => bottomSheett(context),
-                    );
-                  },
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.all(7),
-                padding: const EdgeInsets.all(4),
-                width: constraints.maxWidth * 0.70,
-                height: constraints.maxHeight * 0.07,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: BGColors.BackGroundColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(top: 10),
-                      width: constraints.maxWidth * 0.30,
-                      height: constraints.maxHeight * 0.10,
-                      child: const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: TextField(
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                          decoration: InputDecoration(
-                            hintText: 'Message',
-                            hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 17),
-                            border: InputBorder.none,
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
+                    // messages container
+                    width: size.width,
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(239, 237, 247, 1),
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(35))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30),
+                      child: ChatBubble(service: service, size: size),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    left: 5,
+                    right: 5,
+                    child: Container(
+                      // chating field
+                      width: size.width * 0.4,
+                      height: size.height * 0.08,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Row(
+                        children: [
+                          // IconButton(
+                          //     onPressed: () {
+                          //       showDialog(
+                          //         context: context,
+                          //         builder: (context) {
+                          //           final pro =
+                          //               Provider.of<BasicProvider>(context);
+                          //           return ImageSelectorDialog(
+                          //             pro: pro,
+                          //             size: size,
+                          //             recieverId: widget.user.userId!,
+                          //           );
+                          //         },
+                          //       );
+                          //     },
+                          //     icon: Image.asset(
+                          //       'aassets/files.png',
+                          //       height: 30,
+                          //     )),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                style: GoogleFonts.poppins(
+                                    color: Colors.black, fontSize: 18),
+                                controller: messagecontroller,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    filled: true,
+                                    fillColor:
+                                        const Color.fromRGBO(239, 237, 247, 1)),
+                              ),
+                            ),
                           ),
-                          cursorColor: Colors.white,
-                          keyboardAppearance: Brightness.dark,
-                        ),
+                          IconButton(
+                              onPressed: () {
+                                sendMessage();
+                              },
+                              icon: const Icon(
+                                Icons.send_rounded,
+                                color: Colors.amber,
+                                size: 30,
+                              ))
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 80),
-                      child: Image.asset("assets/files.png"),
-                    ),
-                  ],
-                ),
-              ),
-              // Image.asset("assets/mic (1).png"),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Image.asset("assets/send.png"),
-              ),
-            ],
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget bottomSheett(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      height: 278,
-      width: MediaQuery.of(context).size.width,
-      child: Card(
-        color: BGColors.BackGroundColor,
-        margin: const EdgeInsets.all(18.0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-          child: Column( 
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  iconCreation(
-                      Icons.insert_drive_file, Colors.indigo, "Document"),
-                  SizedBox(
-                    width: 40,
-                  ),
-                  iconCreation(Icons.camera_alt, Colors.pink, "Camera"),
-                  SizedBox(  
-                    width: 40,
-                  ),
-                  iconCreation(Icons.insert_photo, Colors.purple, "Gallery"),
+                  )
                 ],
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  iconCreation(Icons.headset, Colors.orange, "Audio"),
-                  SizedBox(
-                    width: 40,
-                  ),
-                  iconCreation(Icons.location_pin, Colors.teal, "Location"),
-                  SizedBox(
-                    width: 40,
-                  ),
-                  iconCreation(Icons.person, Colors.blue, "Contact"),
-                ],
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget iconCreation(IconData icons, Color color, String text) {
-    return InkWell(
-      onTap: () {},
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: color,
-            child: Icon(
-              icons,
-              size: 29,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 12,
-            ),
-          )
-        ],
-      ),
-    );
+  sendMessage() async {
+    if (messagecontroller.text.isNotEmpty) {
+      await ChatService()
+          .sendMessage(widget.user.userId!, messagecontroller.text, "text");
+      messagecontroller.clear();
+    }
   }
 }

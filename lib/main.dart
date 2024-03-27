@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_tryst/auth_gateway.dart';
 import 'package:talk_tryst/controller/auth_controller.dart';
+import 'package:talk_tryst/controller/basic_provider.dart';
 import 'package:talk_tryst/controller/bottom_provider.dart';
+import 'package:talk_tryst/controller/firebase_provider.dart';
 import 'package:talk_tryst/controller/phonereq_controller.dart';
 import 'package:talk_tryst/firebase_options.dart';
-import 'package:talk_tryst/view/screens/phone_auth.dart';
+import 'package:talk_tryst/view/login/phone_auth.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +31,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => AuthenticationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FirebaseProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BasicProvider(),
         ),
       ],
       child: MaterialApp(debugShowCheckedModeBanner: false, home: AuthGate()),
