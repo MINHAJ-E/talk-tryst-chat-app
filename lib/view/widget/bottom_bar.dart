@@ -33,8 +33,7 @@ class BottomBar extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.call_sharp), label: 'Calls'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.contact_page), label: 'Contact'),
+              BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Groups'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person), label: 'Profile'),
             ],

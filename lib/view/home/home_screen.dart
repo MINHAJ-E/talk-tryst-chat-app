@@ -81,26 +81,27 @@ class HomeScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Consumer<FirebaseProvider>(
-              builder: (context, values, child) => TextFormField(
-                onChanged: (value) {
-                  values.searchUser(value);
-                },
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  filled: true,
-                  fillColor: BGColors.BGBTColor,
-                  hintText: 'Search ',
-                  hintStyle:
-                      const TextStyle(color: Colors.white), // Fix is here
-                  prefixIcon: const Icon(Icons.search),
+            child:
+                // Consumer<FirebaseProvider>(
+                // builder: (context, values, child) =>
+                TextFormField(
+              onChanged: (value) {
+                // values.searchUser(value);
+              },
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30),
                 ),
+                filled: true,
+                fillColor: BGColors.BGBTColor,
+                hintText: 'Search ',
+                hintStyle: const TextStyle(color: Colors.white), // Fix is here
+                prefixIcon: const Icon(Icons.search),
               ),
             ),
+            // ),
           ),
           SizedBox(
             height: size.height * 0.03,

@@ -62,8 +62,9 @@ class _GroupHomePageState extends State<GroupHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: BGColors.BGBTColor,
+      backgroundColor: BGColors.BackGroundColor,
       // appBar: AppBar(
       //   automaticallyImplyLeading: false,
       //   actions: [
@@ -81,10 +82,98 @@ class _GroupHomePageState extends State<GroupHomePage> {
       //     style: TextStyle(fontSize: 27, color: Colors.white),
       //   ),
       // ),
-      body: groupList(),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              top: size.height * 0.1,
+              left: size.width * 0.05,
+              right: size.width * 0.05,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // CircleAvatar(
+                //   backgroundColor: Colors.black,
+                //   child: IconButton(
+                //     onPressed: () {},
+                //     icon: const Icon(
+                //       Icons.search,
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // ),
+                Text(
+                  "Groups",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: size.width * 0.06,
+                  ),
+                ),
+                GestureDetector(
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage("assets/image.png"),
+                  ),
+                  onTap: () {
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (context) => alert(context),
+                    // );
+                  },
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: size.height * 0.03,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              onChanged: (value) {
+                // values.searchUser(value);
+              },
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                filled: true,
+                fillColor: BGColors.BGBTColor,
+                hintText: 'Search ',
+                hintStyle: const TextStyle(color: Colors.white), // Fix is here
+                prefixIcon: const Icon(Icons.search),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: size.height * 0.03,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                  width: size.width,
+                  decoration: BoxDecoration(
+                    color: BGColors.BGBTColor,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    ),
+                  ),
+                  child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: groupList())),
+            ),
+          ),
+        ],
+      ),
+
       floatingActionButton: FloatingActionButton(
         elevation: 0,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: BGColors.BackGroundColor,
         onPressed: () {
           popUpDialog(context);
         },

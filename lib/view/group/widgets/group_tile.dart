@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/view/group/pages/chat_page.dart';
 import 'package:talk_tryst/view/group/widgets/widgets.dart';
 
@@ -31,7 +32,7 @@ class GroupTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 30,
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: BGColors.BackGroundColor,
             child: Text(
               groupName.substring(0, 1).toUpperCase(),
               textAlign: TextAlign.center,
