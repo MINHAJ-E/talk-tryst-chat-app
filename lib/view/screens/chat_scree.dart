@@ -53,7 +53,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   Text(
                     widget.user.userName!,
                     style: GoogleFonts.poppins(
-                        fontSize: 22, fontWeight: FontWeight.bold),
+                      fontSize: 22,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   IconButton(
                       onPressed: () {
@@ -71,8 +74,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   Container(
                     // messages container
                     width: size.width,
-                    decoration: const BoxDecoration(
-                        color: Color.fromRGBO(239, 237, 247, 1),
+                    decoration: BoxDecoration(
+                        color: BGColors.BGBTColor,
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(35))),
                     child: Padding(
@@ -93,25 +96,22 @@ class _ChatScreenState extends State<ChatScreen> {
                           borderRadius: BorderRadius.circular(20)),
                       child: Row(
                         children: [
-                          // IconButton(
-                          //     onPressed: () {
-                          //       showDialog(
-                          //         context: context,
-                          //         builder: (context) {
-                          //           final pro =
-                          //               Provider.of<BasicProvider>(context);
-                          //           return ImageSelectorDialog(
-                          //             pro: pro,
-                          //             size: size,
-                          //             recieverId: widget.user.userId!,
-                          //           );
-                          //         },
-                          //       );
-                          //     },
-                          //     icon: Image.asset(
-                          //       'aassets/files.png',
-                          //       height: 30,
-                          //     )),
+                          IconButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    final pro =
+                                        Provider.of<BasicProvider>(context);
+                                    return ImageSelectorDialog(
+                                      pro: pro,
+                                      size: size,
+                                      recieverId: widget.user.userId!,
+                                    );
+                                  },
+                                );
+                              },
+                              icon: Icon(Icons.file_copy)),
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),

@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_tryst/constants/constants.dart';
 import 'package:talk_tryst/controller/firebase_provider.dart';
+import 'package:talk_tryst/model/user_model.dart';
 import 'package:talk_tryst/services/auth/auth_services.dart';
+import 'package:talk_tryst/view/home/widget/contact_avatars.dart';
 import 'package:talk_tryst/view/screens/chat_scree.dart';
+import 'package:talk_tryst/view/signup/create_account.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -16,7 +20,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     AuthenticationService service = AuthenticationService();
-
+    final val = Provider.of<FirebaseProvider>(context);
+    final index = val.searchedusers.isNotEmpty ? 0 : 0;
+    final userdetailss =
+        val.searchedusers.isNotEmpty ? val.searchedusers[index] : null;
+    // UserModel Userrrr = donatorDocs[index].data();
     return Scaffold(
       backgroundColor: BGColors.BackGroundColor,
       body: Column(
@@ -30,16 +38,16 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.black,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                // CircleAvatar(
+                //   backgroundColor: Colors.black,
+                //   child: IconButton(
+                //     onPressed: () {},
+                //     icon: const Icon(
+                //       Icons.search,
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // ),
                 Text(
                   "Home",
                   style: TextStyle(
@@ -48,8 +56,22 @@ class HomeScreen extends StatelessWidget {
                     fontSize: size.width * 0.06,
                   ),
                 ),
-                const CircleAvatar(
-                  backgroundImage: AssetImage("assets/image.png"),
+                GestureDetector(
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage("assets/image.png"),
+                  ),
+                  onTap: () {
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (context) => alert(context),
+                    // );
+
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => SetProfile(
+                        userdetails: userdetailss!,
+                      ),
+                    ));
+                  },
                 ),
               ],
             ),
@@ -71,9 +93,11 @@ class HomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   filled: true,
-                  fillColor: const Color.fromRGBO(102, 106, 179, 1),
+                  fillColor: BGColors.BGBTColor,
                   hintText: 'Search ',
-                  prefixIcon: const Icon(Icons.abc_rounded),
+                  hintStyle:
+                      const TextStyle(color: Colors.white), // Fix is here
+                  prefixIcon: const Icon(Icons.search),
                 ),
               ),
             ),
@@ -81,12 +105,33 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: size.height * 0.03,
           ),
+          Column(
+            children: [
+              SizedBox(
+                height: size.height * 0.12,
+                width: size.width * 0.9,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    buildContactAvatar('Alla', 'status image1.png'),
+                    buildContactAvatar('July', 'status image2.png'),
+                    buildContactAvatar('Mikle', 'status image3.png'),
+                    buildContactAvatar('Kler', 'status image4.png'),
+                    buildContactAvatar('Moane', 'status image5.png'),
+                    buildContactAvatar('Julie', 'status image6.png'),
+                    buildContactAvatar('Allen', 'status image1.png'),
+                    buildContactAvatar('John', 'status image2.png'),
+                  ],
+                ),
+              ),
+            ],
+          ),
           Expanded(
             child: Container(
               width: size.width,
               decoration: BoxDecoration(
                 color: BGColors.BGBTColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(50),
                   topRight: Radius.circular(50),
                 ),
@@ -98,7 +143,6 @@ class HomeScreen extends StatelessWidget {
                     itemCount: value.searchedusers.length,
                     itemBuilder: (context, index) {
                       final userdetails = value.searchedusers[index];
-
                       if (userdetails.userName !=
                           FirebaseAuth.instance.currentUser?.uid) {
                         return Column(
@@ -131,9 +175,9 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                   subtitle: Text(
-                                    "df",
-                                    // userdetails.phoneNumber!,
-                                    style: TextStyle(color: Colors.black),
+                                    // "df",
+                                    userdetails.phoneNumber!,
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),

@@ -4,7 +4,10 @@ import 'package:talk_tryst/view/home/widget/settings_page_tile.dart';
 
 AlertDialog alert(BuildContext context) {
   return AlertDialog(
-    title: const Text('ADD TODO TASKS'),
+    title: const Text(
+      'Set Profile',
+      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    ),
     content: SizedBox(
       height: 400,
       child: Column(

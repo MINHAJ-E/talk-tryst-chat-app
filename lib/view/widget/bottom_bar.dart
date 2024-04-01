@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:talk_tryst/controller/bottom_provider.dart';
+import 'package:talk_tryst/view/group/pages/home_page.dart';
 import 'package:talk_tryst/view/home/home_screen.dart';
 import 'package:talk_tryst/view/screens/calls_screen.dart';
 import 'package:talk_tryst/view/screens/contact_screen.dart';
@@ -46,7 +47,8 @@ class BottomBar extends StatelessWidget {
   final List<Widget> _pages = [
     const HomeScreen(),
     const CallsScreen(),
-    const ContactScreen(),
+    // const ContactScreen(),
+    const GroupHomePage(),
     const SettingScreen(),
   ];
 }

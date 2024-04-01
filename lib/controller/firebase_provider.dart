@@ -61,6 +61,7 @@ class FirebaseProvider extends ChangeNotifier {
 
   loadUsers() {
     searchedusers = users;
+    notifyListeners();
   }
 
   searchUser(String name) async {
